@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ASCII"?>
+<project>
+  <property name="jar"
+            value="build/munge.jar"/>
+
+  <target name="clean">
+    <delete dir="build"/>
+  </target>
+
+  <target name="jar">
+    <mkdir dir="build/classes"/>
+    <javac debug="yes"
+           debuglevel="source,lines,vars"
+           destdir="build/classes"
+           includeantruntime="false">
+      <compilerarg value="-Xlint:all"/>
+      <src path="src/java"/>
+    </javac>
+    <jar destfile="${jar}">
+      <fileset dir="build/classes"
+               includes="**/*.class"/>
+    </jar>
+  </target>
+
+  <property name="inFile" value="original/annotations.tsv"/>
+  <property name="outDir" value="munged"/>
+  <target name="munge"
+          depends="jar">
+    <java classname="AmtDataMungeAnnotations"
+          classpath="${jar}"
+          fork="true">
+      <arg value="${inFile}"/>
+      <arg value="${outDir}"/>
+    </java>
+  </target>
+
+</project>
