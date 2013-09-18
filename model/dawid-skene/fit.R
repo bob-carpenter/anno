@@ -55,6 +55,13 @@ zVote <- rep(0,I);
 for (i in 1:I)
   zVote[i] <- max_index(votes[i,]);
 
+pluralityVotePercentage
+for (i in 1:I)
+    pluralityVotePercentage[i] <- votes[i,zVote[i]] / sum(votes[i,]); 
+
+hist(pluralityVotePercentage);
+
+
 thetaVote <- array(2,c(J,K,K)); 
 for (j in 1:J)
   for (k in 1:K)
