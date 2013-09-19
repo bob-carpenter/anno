@@ -6,20 +6,19 @@ data {
   int<lower=1,upper=J> jj[N];  // coder for observation n
   int<lower=1,upper=I> ii[N];  // item for observation n
   int<lower=1,upper=K> y[N];   // label for observation n
-  vector[K] alpha;             // prior for prevalence (positive)
-  vector[K] gamma[K];          // prior for accuracy hyperprior
+  vector<lower=0>[K] alpha;             // prior for prevalence (positive)
+  vector<lower=0>[K] gamma[K];          // prior for accuracy hyperprior
 }
 parameters {
-  simplex[K] pi;               // prevalence of categories
-  simplex[K] theta[J,K];       // response of anotator j to category k
-  real<lower=0> betacount[K]; // count of response prior
-  simplex[K] betamean[K];     // mean of response prior
+  simplex[K] pi;                // prevalence of categories
+  simplex[K] theta[J,K];        // response of anotator j to category k
+  vector[K]<lower=0> betacount; // count of response prior
+  simplex[K] betamean[K];       // mean of response prior
 }
 transformed parameters {
   vector[K] beta[K];           // prior for coder responses (positive)
 
-  for (k in 1:K)
-    beta[k] <- betacount[k] * betamean[k];
+  beta <- betacount .* betamean;
 }
 model {
   real cat_log[I,K];  // vector of log probs (up to const) for item i
@@ -30,9 +29,7 @@ model {
   for (k in 1:K)
     betamean[k] ~ dirichlet(gamma[k]);
   
-
-  for (k in 1:K)
-    betacount[k] ~ normal(0,8);
+  betacount ~ cauchy(0,5);
 
   for (j in 1:J)
     for (k in 1:K)
