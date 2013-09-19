@@ -26,6 +26,7 @@
   <property name="outDir" value="munged"/>
   <target name="munge"
           depends="jar">
+    <mkdir dir="munged"/>
     <java classname="AmtDataMungeAnnotations"
           classpath="${jar}"
           fork="true">
