@@ -1,0 +1,4 @@
+This dataset is licensed by Google Inc. under the Creative Commons Attribution-Sharealike 3.0 license.
+http://creativecommons.org/licenses/by-sa/3.0/
+
+from: http://www.crowdscale.org/shared-task/task-fact-eval
