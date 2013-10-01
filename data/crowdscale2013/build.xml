@@ -23,7 +23,7 @@
     </jar>
   </target>
 
-  <property name="inFile" value="original/Google_KG_institution_CrowdScale_v3_judgments.csv"/>
+  <property name="inFile" value="original/Google_KG_institution_CrowdScale_v3_judgments.csv.gz"/>
   <property name="dataFile" value="munged/GoogleKG.csv"/>
   <property name="symtabFile" value="munged/GoogleKGSymTab.csv"/>
   <target name="munge"
