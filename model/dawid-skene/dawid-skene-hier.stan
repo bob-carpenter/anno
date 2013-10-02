@@ -12,13 +12,15 @@ data {
 parameters {
   simplex[K] pi;                // prevalence of categories
   simplex[K] theta[J,K];        // response of anotator j to category k
-  vector[K]<lower=0> betacount; // count of response prior
+  vector<lower=1>[K] betacount; // count of response prior
   simplex[K] betamean[K];       // mean of response prior
 }
 transformed parameters {
   vector[K] beta[K];           // prior for coder responses (positive)
 
-  beta <- betacount .* betamean;
+  for (k in 1:K)
+    beta[k] <- betacount[k] * betamean[k];
+
 }
 model {
   real cat_log[I,K];  // vector of log probs (up to const) for item i
