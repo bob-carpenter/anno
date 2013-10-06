@@ -50,9 +50,16 @@ get_votes <- function(dfData) {
   dfVotes <- cbind(dfVotes,z);
 
   zPvp <- apply(votes,1,plurality_vote_p);
-  z <- matrix(zPvp,ncol=1);
-  colnames(z) <- c("zPvp");
-  dfVotes <- cbind(dfVotes,z);
+  zs <- matrix(zPvp,ncol=1);
+  colnames(zs) <- c("zPvp");
+  dfVotes <- cbind(dfVotes,zs);
+
+  ratios <- rep(" ",I);
+  for (i in 1:I)
+    ratios[i] <- paste(as.character(votes[i,zVote[i]]),as.character(sum(votes[i,])),sep="/");
+  rs <- matrix(ratios,ncol=1);
+  colnames(rs) <- c("ratios");
+  dfVotes <- cbind(dfVotes,rs);
 
   return(dfVotes);
 }
