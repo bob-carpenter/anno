@@ -6,24 +6,7 @@
 library(rstan);
 
 library("ggplot2")
-library("grid");
 library("reshape")
-
-# max_index:  helper function
-# returns index of highest value item in a vector
-# in case of ties, returns lowest idx
-max_index <- function(v) {
-  max_index <- 1;
-  for (n in 2:length(v))
-    if(v[n] > v[max_index])
-      max_index <- n;
-  return(max_index);
-}
-
-plurality_vote_p <- function(v) {
-  return (v[max_index(v)]/sum(v));
-}
-
 
 # data file format:  tab separated values, 3 columns, header row
 # question rater judgment
@@ -38,6 +21,12 @@ get_data = function(filename) {
   colnames(dfData) <- c("item","annotator","label");
   return(dfData);
 };
+
+# plurality_vote_p:  helper function
+# calculates proportion of votes to most popular item
+plurality_vote_p <- function(v) {
+  return (v[which.max(v)]/sum(v));
+}
 
 get_votes <- function(dfData) {
   data <- as.matrix(dfData);
@@ -55,7 +44,7 @@ get_votes <- function(dfData) {
   colnames(votes) <- cnames;
   dfVotes <- as.data.frame(votes);
 
-  zVote <- apply(votes,1,max_index);
+  zVote <- apply(votes,1,which.max);
   z <- matrix(zVote,ncol=1);
   colnames(z) <- c("zVote");
   dfVotes <- cbind(dfVotes,z);
@@ -68,14 +57,12 @@ get_votes <- function(dfData) {
   return(dfVotes);
 }
 
-
 # plot_ipa: return barplot of items per annotator
 plot_ipa = function(dfData) {
-  tableIPA <- as.matrix(sort(table(dfData$annotator)[]),ncol=1);
+  tableIPA <- as.matrix(rev(sort(table(dfData$annotator)[])),ncol=1);
   dfIPA <- melt(tableIPA);
   pIPA <- ggplot(dfIPA,aes(x=X1,y=value)) +
           geom_bar(stat="identity",position="dodge") +
-          theme_bw() +
           theme(axis.title.x=element_blank(), 
                 axis.title.y=element_blank()) +
           labs(title="Items Annotated Per Annotator");
@@ -87,10 +74,10 @@ plot_pvp = function(dfData) {
     # histogram of proportion votes for plurality category per item
     # pluralityVotePercentage - proportion of votes cast for winning category per item
     pPVP <- ggplot(dfData,aes(x=factor(zPvp))) + 
-            geom_histogram(binwith=20) +
-            theme_bw() +
+            geom_histogram() +
             theme(axis.title.x=element_blank(), 
                   axis.title.y=element_blank()) +
+            scale_x_discrete(breaks = round(seq(0,1,by = 0.2),1)) +
             labs(title="Historgram of Proportion Votes for Plurality Voted Category");
     return(pPVP);
 }
