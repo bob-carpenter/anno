@@ -43,11 +43,13 @@ parameters {
 model {
   real cat_log[I,K];  // vector of log probs (up to const) for item i
 
+  // prior
   pi ~ dirichlet(alpha);
   for (j in 1:J)
     for (k in 1:K)
       theta[j,k] ~ dirichlet(beta[k]);
 
+  // likelihood, marginalizes out z (z[i] is category of item i)
   for (i in 1:I)
     for (k in 1:K)
       cat_log[i,k] <- log(pi[k]);  // efficiency: compute log(pi[k]) once

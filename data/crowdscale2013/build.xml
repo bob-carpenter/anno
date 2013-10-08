@@ -24,8 +24,8 @@
   </target>
 
   <property name="inFile" value="original/Google_KG_institution_CrowdScale_v3_judgments.csv.gz"/>
-  <property name="dataFile" value="munged/GoogleKG.csv"/>
-  <property name="symtabFile" value="munged/GoogleKGSymTab.csv"/>
+  <property name="dataFile" value="munged/Google.tsv"/>
+  <property name="symtabFile" value="munged/GoogleSymTab.tsv"/>
   <target name="munge"
           depends="jar">
     <mkdir dir="munged"/>

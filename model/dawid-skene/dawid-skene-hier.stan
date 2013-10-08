@@ -16,7 +16,7 @@ parameters {
   simplex[K] betamean[K];       // mean of response prior
 }
 transformed parameters {
-  vector[K] beta[K];           // prior for coder responses (positive)
+  vector<lower=0>[K] beta[K];           // prior for coder responses (positive)
 
   for (k in 1:K)
     beta[k] <- betacount[k] * betamean[k];
