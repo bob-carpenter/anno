@@ -34,7 +34,7 @@ public class AmtDataMungeAnnotations {
         String inputFileName = args[0];
         String mungeDirName = args[1];
         BufferedReader reader 
-            = new BufferedReader(new InputStreamReader(new FileInputStream(args[0]), 
+            = new BufferedReader(new InputStreamReader(new FileInputStream(inputFileName),
                                                        "ASCII"));
 
         // read through file 1 time, estable max senses per word
@@ -65,7 +65,7 @@ public class AmtDataMungeAnnotations {
         reader.close();
 
         reader 
-            = new BufferedReader(new InputStreamReader(new FileInputStream(args[0]), 
+            = new BufferedReader(new InputStreamReader(new FileInputStream(inputFileName),
                                                        "ASCII"));
         BufferedWriter tsvWriter = null;
         String curWord = null;
@@ -83,7 +83,6 @@ public class AmtDataMungeAnnotations {
                 if (curWord != null) {
                     // finish current WordPos
                     tsvWriter.close();
-                    System.out.println("annotators for word " + curWord + ": " + raterMap.size());
                     // record mappings annotatorId -> jj
                     File curRaters = new File(mungeDirName,curWord+".map-a");
                     BufferedWriter mapWriter
@@ -107,7 +106,6 @@ public class AmtDataMungeAnnotations {
 
                 } 
                 curWord = fields[0];
-                System.out.println("#lines read=" + lineNum);
                 System.out.println("processing annotations for word " + curWord);
                 File curWordTsv = new File(mungeDirName,curWord+".tsv");
                 tsvWriter
@@ -126,7 +124,6 @@ public class AmtDataMungeAnnotations {
             if (k == 0) {
                 Integer maxK = catsPerWord.get(fields[0]);
                 k = maxK.intValue() + 1;
-                System.out.println("line: " + lineNum + " word: " + fields[0] + ", cat 0 changed to " + k);
             }
             tsvWriter.write(ii + "\t" + jj + "\t" + k + "\n");
         }
