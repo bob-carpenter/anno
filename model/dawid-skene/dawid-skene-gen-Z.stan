@@ -65,16 +65,3 @@ generated quantities {
   for (i in 1:I)
     expected_Z[i] <- expected_Z[i] / sum(expected_Z[i]);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
