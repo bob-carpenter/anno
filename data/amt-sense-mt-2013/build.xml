@@ -35,4 +35,23 @@
     </java>
   </target>
 
+  <property name="word" value="add-v"/>
+  <property name="dataFile" value="error_analysis/add-v-sentences.txt"/>
+  <property name="htmlDir" value="error_analysis/html"/>
+  <target name="makeHtml"
+          depends="jar">
+    <mkdir dir="error_analysis/html"/>
+    <java classname="AmtMakeHtml"
+          classpath="${jar}"
+          fork="true">
+      <arg value="${word}"/>
+      <arg value="${dataFile}"/>
+      <arg value="${htmlDir}"/>
+    </java>
+  </target>
+
+
+
+
+
 </project>
