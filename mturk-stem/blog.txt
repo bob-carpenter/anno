@@ -1,0 +1,142 @@
+We have customers who want stemmers for multiple languages.  We only have research rights to <a href="">CELEX 2</a>, and it's only available for English, Dutch and German anyway, and then for only about 50K English words.  We've had good success with Amazon's Mechanical Turk, so we thought we'd try to define a stemming standard.  The legwork (well, Python-work and <a href="http://tomayko.com/writings/rest-to-my-wife">REST</a>-work) is being done by <a href="http://www.ling.ohio-state.edu/~jamison/">Emily Jamison</a>, who's working as an intern for us.  
+
+I'll discuss the results we got from the mechanical Turk in a later blog entry; this one's full after discussing the coding standard.
+
+<h3>The Universe of Tokens</h3>
+
+We started with the set of lowercased alphabetic tokens appearing at least twice in the English section of the <a href="http://corpora.uni-leipzig.de/">Leipzig Corpus</a>.  We took 1000 of these and had them each stemmed by 5 Turkers.  (We've actually done this twice trying out two different interfaces.)  Arguably, we should've included the words, too.
+
+<h3>What's a Stem?</h3>
+
+For technical reasons, I want a corpus consisting of a word and the next simpler word(s) out of which it's made, not counting productive affixes.  Thus it might take a sequence of such stemming steps to produce a root form (e.g. "restfully" to "restful" to "rest").  
+
+
+My first motivation is term (feature) extraction for search (or general classifiers).  I want to include the word itself and its whole chain of stems.  That way, a document containing "restfully" most closely matches a query containing "restfully", but will also match a query containing "restful".  This is similar to indexing Chinese with n-grams and words and should have a similar advantage for precision and recall.  Hopefully this will mitigate the main problem raised in my earlier post, <a href="http://lingpipe-blog.com/2007/03/21/to-stem-or-not-to-stem/">To Stem or Not to Stem?</a>.
+
+The second motivation is to gather data to train an automatic stemmer. This is much easier to do a single stem at a time, because the data's awfully sparse for long sequences of prefixes and suffixes and compounds.  
+
+A third motivation is to make the task easier for the mechanical Turkers.  The first run that asked for all the subwords and affixes was just too much work (4-5 minutes per 20 words for all stems versus 1 minute per 20 words for just the "next" stem).
+
+
+<h3>Does it Work?</h3>
+
+Well, Emily and I went through the 1000 words and after discussing the standard (but not the examples), stemmed everything ourselves.  It took us both less than an hour (making me think we could, with reasonable precautions against RSI, almost handle a corpus of 100,000 words, which is my goal).
+
+Our agreement rate was an abysmal 85%.  Most of that was because we hadn't agreed how to tag for stems on the instructions, and Emily followed the instructions, and I followed my own understanding.  Not counting compounds, our agreement was closer to 95%. 
+
+
+<h3>Case Studies</h3>
+
+The devil's in the details.  I've broken down the cases which required some thoughtful adjudication, which is about 5% of the total cases.  The raw word's on the left and the stem in our gold standard on the right.  I added CELEX-2 notes in parentheses when they either disagreed without our stemming or didn't have the word in the dictionary (-).
+
+
+
+<b>Foreign/Historical Roots.</b> Here, we often have multiple words in English that share a foreign or historical root that is not itself an English word.  For instance, "hypo" and "epidemi" are not English words, nor is there a shared English stem for "euphoria" and "euphoric".
+
+<ul>
+<li> odious:  odious
+<li> euphoria:  euphoria  (CELEX-2 stems "euphoric" to "euphoria")
+<li> mathematical:  mathematics
+<li> epidemiology:  epidemic (-)
+<li> hypocrisy: hypocrisy (hypocrite)
+<li> maximize:  maximum
+</ul>
+
+<b>Prefix/Suffix Ambiguity.</b> A word with a productive prefix and suffix can often be analyzed in two ways.  For instance, "unlocking" could be "un"+"locking" or "unlock"+"ing".  Here, because the action is an unlock action, we prefer that root.  Similarly, we prefer "modernised" to "unmodern" as a reduction for "unmodernised".  The case of "overcollateralization" is trickier, with either "overcollateralize" and "collateralization" being reasonable choices.
+
+<ul>
+<li> unmodernised:  modernised (-)
+<li> prearrangement:  prearrange
+<li> unlocking:  unlock (-)
+<li> incorrigible:  corrigible
+<li> disability:  disable
+<li> inconvenience:  inconvenient (convenient)
+<li> resentencing:  sentencing (-)
+<li> overcollateralization:  collateralization (-)
+</ul>
+
+
+<b>Compound/Affix Ambiguity.</b> Compounds provide a general case of ambiguity with affixes or suffixes.  Again, we want the natural word to be left behind after stemming, which is why "headquarters" must be made of "head"+"quarters" rather than "headquarter"+"s" -- it's not the plural of "headquarter".  On the other hand, "cockfighting" becomes "cockfight"+"ing", because the compound is a natural word.  In contrast, "newsgathering" becomes "news"+"gathering", because "newsgather" isn't a typical compound.  Cases like "ultraleftist" are harder, because they make sense either way.  Also note that you get non-affixational morphology with "signalmen", the plural of "signalman".
+
+<ul>
+<li> cockfighting:  cockfight (cock fighting)
+<li> headquarters:  head quarters
+<li> ultraleftist:  ultra leftist (-)
+<li> omnipotence:  omnipotent
+<li> steelmaking:  steel making (-)
+<li> stockholder:  stock holder
+<li> signalmen: signalman (-)
+<li> weatherbeaten:  weather beaten (weather-beaten)
+<li> supercomputer:  super computer (-)
+<li> newsgathering:  news gathering (-)
+</ul>
+
+
+
+<b>Non-Standard Affixes.</b> Next, we have non-standard affixes or "funny" words, like "freebie", which is clearly related to "free".
+
+<ul>
+<li> freebie:  free (freebie)
+</ul>
+
+
+<b>Fixed Affixes.</b> Some prefixes seem to be awfully tightly bound; it's not clear "recall" should stem to "call" even though they're morphologically related.
+
+<ul>
+<li> enclose:  close (enclose)
+<li> recall:  call
+</ul>
+
+<b>Comparatives/Superlatives.</b> We were unclear what to do with comparatives, but decided superlatives should reduce to the comparative ("furthest" to "further") and superlatives to basic scalar adjectives ("fitter" to "fit").  
+
+<ul>
+<li> fitter:  fit
+<li> furthest:  further (-)
+</ul>
+
+
+<b>False versus Rare Roots.</b> Sometimes words aren't compounds even though they look like it, such as "bulldoze", which is a back-derivation from a product name "bulldozer".  Who knew that "fangle", "percept" and "aniline" were words?  Or that "weary" isn't related to "wear"?  And then there's "incommunicado" where people are prone to say "communicado".  The cases like "chloracne" are less clear, because "chlor", one of the compounded nouns, isn't an ordinary English word.  Note that we break apart even the words that standard introductions to linguistic morphology tell you are not morphologically complex, like "gooseberry" and "strawberry".
+
+<ul>
+<li> bulldoze:  bulldoze (bull doze)
+<li> fangled:  fangle (-)
+<li> weary:  weary
+<li> perceptual:  percept (-)
+<li> incommunicado:  incommunicado
+<li> doomsday:  dooms day (doomsday)
+<li> chloracne:  chlor acne (-)
+<li> polyaniline:  poly aniline (-)
+<li> gooseberry:  goose berry
+</ul>
+
+<b>Semantic Drift.</b> Some words don't seem very closely related to their stems because the derived word has gathered a fixed meaning (the examples surrounding "authority" versus "author" in the previous blog post were clearer).  We stemmed them anyway.
+
+<ul>
+<li> directory:  direct 
+</ul>
+
+
+<b>Misspellings/Contractions/Slang.</b>  We just treat them as if they were spelled properly and did as well as we could.
+
+<ul>
+<li> oughta:  ought (-)
+</ul>
+
+
+<b>Derivational Ambiguity:</b>  Our first example was better, leaving us asking whether "butcher" should stem to "butch" (imagine the gender-based usage, not the meat-cutting one).  In some cases there are ambiguities.  In our sample of 1000, we found this one:
+
+<ul>
+<li> sweater:  sweat
+</ul>
+
+
+
+<b>More than One Issue.</b>  Some words have multiple issues.
+
+<ul>
+<li> sadomasochism:  sado masochism (sadomasochism)
+<li> honoaria:  honoarium (-, but they stem "honourarium" to "honour")
+</ul>
+
+
+
