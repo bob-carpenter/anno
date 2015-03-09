@@ -1,0 +1,459 @@
+* < copycat  copy cat
+> copycat  copycat
+
+< monkeyshines  monkey shines
+> monkeyshines  monkeyshine
+* monkeyshines monkeyshine
+
+* trafficker  traffic
+> trafficker  traffick
+
+< odious  odor
+!* odious  odious
+
+* < said  say
+> said  said
+
+* chipboard  chip board
+> chipboard  board
+
+* landlord  land lord
+> landlord  landlord
+
+* interfered  interfere
+> interfered  interfer
+
+* midwinter  mid winter
+> midwinter  winter
+
+* prayer  pray
+> prayer  prayer
+
+< cockfighting  cock fighting
+! * cockfighting  cockfight
+
+* sunlight  sun light
+> sunlight  light
+
+! * headquarters  head quarters
+> headquarters  headquarter
+
+* protean  proteus
+> protean  protea
+
+* accretion  accrete
+> accretion  accrue
+
+< euphoria  euphoric
+! * euphoria  euphoria
+
+* ribonucleic  ribo nucleic
+> ribonucleic  ribonucleic
+
+* fateful  fate
+> fateful  fateful
+
+* cultured  culture
+> cultured  cultur
+
+! * ultraleftist  ultra leftist
+> ultraleftist  ultraleft
+
+< magnetism  magnetic
+* magnetism  magnet
+
+* nightclub  night club
+> nightclub  club
+
+* newissue  new issue
+> newissue  issue
+
+* overburdening  overburden
+> overburdening  burdening
+
+! * freebie  free
+> freebie  freebie
+
+! * mathematical  mathematics
+> mathematical  mathematic
+
+< enclose  enclose
+! * enclose  close
+
+! * omnipotence  omnipotent
+> omnipotence  potence
+
+* cocksure  cock sure
+> cocksure  sure
+
+! * unmodernised  modernised
+> unmodernised  unmodernise
+
+* ceasefire  cease fire
+> ceasefire  fire
+
+< itself  itself
+> itself  it
+* it self
+
+* marshalled  marshal
+> marshalled  marshall
+
+* uptight  up tight
+> uptight  uptight
+
+! * fitter  fit
+> fitter  fitter
+
+* ecosystem  eco system
+> ecosystem  ecosystem
+
+! * sadomasochism  sado masochism
+> sadomasochism  sadomasochism
+
+* buttonhole  button hole
+> buttonhole  hole
+
+< bulldoze  bull doze
+! * bulldoze  bulldoze
+
+* resilience  resilient
+> resilience  resilience
+
+* underline  under line
+> underline  underline
+
+!*  prearrangement  prearrange
+> prearrangement  arrangement
+
+< lipsticks  lip stick
+* lipsticks  lipstick
+
+* spaceship  space ship
+> spaceship  spaceship
+
+* orchestral  orchestra
+> orchestral  orchestral
+
+< sunbathing  sunbathing
+* sunbathing  sunbathe
+
+* tailwind  tail wind
+> tailwind  tailwind
+
+! * steelmaking  steel making
+> steelmaking  making
+
+* overlord  over lord
+> overlord  lord
+
+* petrocurrency  petro currency
+> petrocurrency  currency
+
+! * furthest  further
+> furthest  furthest
+
+* crabmeat  crab meat
+> crabmeat  meat
+
+* sideline  side line
+> sideline  sideline
+
+* postseason  post season
+> postseason  season
+
+! * epidemiology  epidemic
+> epidemiology  epidemiology
+
+* dynamism  dynamic
+> dynamism  dynamy
+
+* crier  cry
+> crier  crier
+
+! * incorrigible  corrigible
+> incorrigible  incorrigible
+
+* minicar  mini car
+> minicar  car
+
+* sidearm  side arm
+> sidearm  arm
+
+! * stockholder  stock holder
+> stockholder  stockholder
+
+< directory  directory
+! * directory  direct
+
+< fangled  fangled
+! * > fangled  fangle
+
+* streetcorner  street corner
+> streetcorner  corner
+
+* lacy  lace
+> lacy  lacy
+
+! * recall  call
+> recall  recall
+
+< signalmen  signal men
+> signalmen  signal
+! * signalman
+
+! * maximize  maximum
+> maximize  maximize
+
+! * unlocking  unlock
+> unlocking  locking
+
+! * gooseberry  goose berry
+> gooseberry  gooseberry
+
+! * weary  weary
+> weary  wear
+
+* longtime  long time
+> longtime  time
+
+* storefront  store front
+> storefront  store
+
+* convention  convene
+> convention  convention
+
+* bridegroom  bride groom
+> bridegroom  bridegroom
+
+! * disability  disable
+> disability  ability
+
+* archconservative  arch conservative
+> archconservative  conservative
+
+* denomination  denominate
+> denomination  denomination
+
+* opportunites  opportunity
+> opportunites  opportunites
+
+* shakeout  shake out
+> shakeout  shakeout
+
+* lochside  loch side
+> lochside  lochside
+
+! * weatherbeaten  weather beaten
+> weatherbeaten  weatherbeaten
+
+* outreach  out reach
+> outreach  outreach
+
+! * inconvenience  inconvenient
+> inconvenience  convenience
+
+* hindrance  hinder
+> hindrance  hindrance
+
+< convocation  convocation
+> convocation  convocate
+* convoke
+
+* marshalling  marshal
+> marshalling  marshall
+
+* fairytale  fairy tale
+> fairytale  fairytale
+
+* underrate  under rate
+> underrate  rate
+
+* grandiloquence  grandiloquent
+> grandiloquence  grandiloquence
+
+* pretension  pretense
+> pretension  pretension
+
+* statewide  state wide
+> statewide  state
+
+< perceptual  perceive
+! * perceptual  percept
+
+< incommunicado  communicado
+! * incommunicado  incommunicado
+
+* hilltop  hill top
+> hilltop  hill
+
+* contaminant  contaminate
+> contaminant  contaminant
+
+* uproot  up root
+> uproot  root
+
+* overcome  over come
+> overcome  overcome
+
+* playroom  play room
+> playroom  room
+
+* brownstone  brown stone
+> brownstone  brownstone
+
+* rearguard  rear guard
+> rearguard  rearguard
+
+* affluence  affluent
+> affluence  affluence
+
+< stiffed  stif
+* stiffed  stiff
+
+* testy  test
+> testy  testy
+
+* grandmaster  grand master
+> grandmaster  grandmaster
+
+* countdown  count down
+> countdown  countdown
+
+! * doomsday  dooms day
+> doomsday  doomsday
+
+< hypocrisy  hypocrite
+! * hypocrisy  hypocrisy
+
+< security  security
+* security  secure
+
+* aftermath  after math
+> aftermath  aftermath
+
+* racetrack  race track
+> racetrack  racetrack
+
+* tribunal  tribune
+> tribunal  tribunal
+
+* uptrend  up trend
+> uptrend  trend
+
+< washes  washe
+* washes  wash
+
+* pawnbroker  pawn broker
+> pawnbroker  pawnbroker
+
+* salutary  salute
+> salutary  salutary
+
+* dragnet  drag net
+> dragnet  dragnet
+
+* overseer  over seer
+> overseer  oversee
+
+* overload  over load
+> overload  overload
+
+* barmaid  bar maid
+> barmaid  maid
+
+* viewpoint  view point
+> viewpoint  viewpoint
+
+< prescription  prescription
+* prescription  prescribe
+
+! * supercomputer  super computer
+> supercomputer  computer
+
+! * chloracne  chlor acne
+> chloracne  chloracne
+
+! * < resentencing  sentencing
+> resentencing  resentence
+
+* < excrement  excrete
+> excrement  excrement
+
+! * < oughta  ought
+> oughta  oughta
+
+* postdoctoral  post doctoral
+> postdoctoral  doctoral
+
+! * overcollateralization  collateralization
+> overcollateralization  overcollateralize
+
+* < deodorant  odorant
+> deodorant  deodorant
+
+! * < sweater  sweat
+> sweater  sweater
+
+* bloodbath  blood bath
+> bloodbath  bloodbath
+
+* < overtake  over take
+> overtake  overtake
+
+* < depository  deposit
+> depository  depository
+
+< vandalism  vandalise
+* > vandalism  vandal
+
+* < witchhunt  witch hunt
+> witchhunt  witchhunt
+
+* < triphasic  tri phasic
+> triphasic  triphasic
+
+* < northwesterly  northwester
+> northwesterly  northwestern
+
+* < hydrocarbon  hydro carbon
+> hydrocarbon  hydrocarbon
+
+! * < newsgathering  news gathering
+> newsgathering  gathering
+
+* < ordinator  ordinate
+> ordinator  ordinator
+
+! * < polyaniline  poly aniline
+> polyaniline  polyaniline
+
+* < intestinal  intestine
+> intestinal  intestinal
+
+* < wholesale  whole sale
+> wholesale  sale
+
+* < nightstick  night stick
+> nightstick  nightstick
+
+* < beforehand  before hand
+> beforehand  beforehand
+
+* < foodservice  food service
+> foodservice  foodservice
+
+* < loanloss  loan loss
+> loanloss  loanloss
+
+* < perches  perch
+> perches  perche
+
+! * < honoaria  honoarium
+> honoaria  honorary
+
+* < offhand  off hand
+> offhand  offhand
+
+* < whatever  what ever
+> whatever  whatever
